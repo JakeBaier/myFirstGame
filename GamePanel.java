@@ -68,7 +68,7 @@ class GamePanel extends JPanel implements KeyListener, Runnable {
     //the speed is based off of the score at maxes out when score hits 400
     score += 1;
     if (score<400) {
-      obstacles.setMovementSpeed((score / 50) + 10);
+      obstacles.setMovementSpeed((score / 20) + 10);
     }
     ground.update();
     //does not work

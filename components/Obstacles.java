@@ -53,10 +53,10 @@ public class Obstacles {
     imageList.add(new Resource().getResourceImage("../images/Cloud-2.png"));
     imageList.add(new Resource().getResourceImage("../images/Cloud-1.png"));
     imageList.add(new Resource().getResourceImage("../images/Cloud-3.png"));
-    imageList.add(new Resource().getResourceImage("../images/Cactus-1.png"));
-    imageList.add(new Resource().getResourceImage("../images/Cactus-3.png"));
-    imageList.add(new Resource().getResourceImage("../images/Cactus-4.png"));
-    imageList.add(new Resource().getResourceImage("../images/Cactus-5.png"));
+    imageList.add(new Resource().getResourceImage("../images/Cloud-1.png"));
+    imageList.add(new Resource().getResourceImage("../images/Cloud-3.png"));
+    imageList.add(new Resource().getResourceImage("../images/Cloud-2.png"));
+    imageList.add(new Resource().getResourceImage("../images/Cloud-2.png"));
     
     int x = firstX;
     
