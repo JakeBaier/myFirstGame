@@ -68,7 +68,7 @@ class GamePanel extends JPanel implements KeyListener, Runnable {
     //the speed is based off of the score at maxes out when score hits 400
     score += 1;
     if (score<400) {
-      obstacles.setMovementSpeed((score / 50) + 10);
+      obstacles.setMovementSpeed((score / 20) + 10);
     }
     ground.update();
     //does not work
@@ -86,7 +86,7 @@ class GamePanel extends JPanel implements KeyListener, Runnable {
   }
 
   public void reset() {
-    score = 0;
+    //score = 0;
     System.out.println("reset");
    obstacles.resume();
     gameOver = true;
@@ -121,7 +121,16 @@ class GamePanel extends JPanel implements KeyListener, Runnable {
     }
     //is required to run for some reason
     public void keyTyped(KeyEvent e) {
-        // System.out.println("keyPressed: "+e);
+        if (e.getKeyCode() == KeyEvent.VK_ENTER){
+            if (animator == null || !running) {
+                animator.start();
+                plane.startRunning();
+            }   else {
+                score = 0;
+                this.reset();
+                this.updateGame();
+            }
+        }
 
     }
     public void keyReleased(KeyEvent e) {
