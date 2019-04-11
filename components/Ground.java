@@ -4,24 +4,25 @@ import utility.Resource;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.*;
 
-//hey there folks
-
-import javax.imageio.ImageIO;
 
 public class Ground {
   
-  private class GroundImage {
+  private class SpaceImage {
     BufferedImage image;
+    int x;
+  }
+  private class GroundImage {
+    BufferedImage DesertImage;
     int x;
   }
   
   public static int GROUND_Y;
   
-  private BufferedImage image;
+  private BufferedImage image, DesertImage;
   
+  private ArrayList<SpaceImage> spaceImageSet;
   private ArrayList<GroundImage> groundImageSet;
   
   public Ground(int panelHeight) {
@@ -32,13 +33,23 @@ public class Ground {
     try{
       image = new Resource().getResourceImage("../images/space.png");
     } catch(Exception e) {e.printStackTrace();}
+    try {
+      DesertImage = new Resource().getResourceImage("../images/Desert-2.png");
+    } catch(Exception e) {e.printStackTrace();}
     
+    spaceImageSet = new ArrayList<SpaceImage>();
     groundImageSet = new ArrayList<GroundImage>();
     
     //first ground image:
     for(int i=0; i<3; i++) {
-      GroundImage obj = new GroundImage();
+      SpaceImage obj = new SpaceImage();
       obj.image = image;
+      obj.x = 0;
+      spaceImageSet.add(obj);
+    }
+    for(int i=0; i<3; i++) {
+      GroundImage obj = new GroundImage();
+      obj.DesertImage = DesertImage;
       obj.x = 0;
       groundImageSet.add(obj);
     }
@@ -52,28 +63,28 @@ public class Ground {
   //}
   
   public void update() {
-    Iterator<GroundImage> looper = groundImageSet.iterator();
-    GroundImage first = looper.next();
+    Iterator<SpaceImage> looper = spaceImageSet.iterator();
+    SpaceImage first = looper.next();
     //the speed of the ground image moving from right to left
     first.x -= 10;
     
     int previousX = first.x;
     while(looper.hasNext()) {
-      GroundImage next = looper.next();
+      SpaceImage next = looper.next();
       next.x = previousX + image.getWidth();
       previousX = next.x;
     }
     
     if(first.x < -image.getWidth()) {
-      groundImageSet.remove(first);
+      spaceImageSet.remove(first);
       first.x = previousX + image.getWidth();
-      groundImageSet.add(first);
+      spaceImageSet.add(first);
     }
     
   }
   
   public void create(Graphics g) {
-		for(GroundImage img : groundImageSet) {
+		for(SpaceImage img : spaceImageSet) {
 			g.drawImage(img.image, (int) img.x, 0, null);
 		}
 	}
