@@ -28,8 +28,7 @@ public class Ground {
   public Ground(int panelHeight) {
     //moves the ground position on the screen. 1 is the top and 0 is below the bottom
     //changing 0.25 to 0.05
-    GROUND_Y = 0;
-    //GROUND_Y = (int)(panelHeight - 0.25 * panelHeight);
+    GROUND_Y = (int)(panelHeight - 0.25 * panelHeight);
     
     try{
       image = new Resource().getResourceImage("../images/space.png");
@@ -39,7 +38,7 @@ public class Ground {
     } catch(Exception e) {e.printStackTrace();}
     
     spaceImageSet = new ArrayList<SpaceImage>();
-    groundImageSet = new ArrayList<groundImage>();
+    groundImageSet = new ArrayList<GroundImage>();
     
     //first ground image:
     for(int i=0; i<3; i++) {
