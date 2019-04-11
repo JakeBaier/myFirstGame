@@ -5,8 +5,8 @@ class UserInterface {
   //main window is created
   JFrame mainWindow = new JFrame("Don't Touch the Clouds");
   //size of the frame
-  public static int WIDTH =800;
-  public static int HEIGHT = 500;
+  public static int WIDTH =1000;
+  public static int HEIGHT = 700;
   //new class to show the content
   public void createAndShowGUI() {
     mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
