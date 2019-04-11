@@ -67,7 +67,7 @@ public class Obstacles {
       ob.image = bi;
       ob.x = x;
       //uppermost bound plus random generation with range of 350 cloud
-      ob.y = 20 + ((int)(Math.random()*350+1));
+      ob.y = 20 + ((int)(Math.random()*600+1));
       x += obstacleInterval;
       
       obList.add(ob);
@@ -98,7 +98,7 @@ public class Obstacles {
   public void create(Graphics g) {
     for(Obstacle ob : obList) {
       g.setColor(Color.red);
-      g.drawRect(ob.getObstacle().x, ob.getObstacle().y, ob.getObstacle().width, ob.getObstacle().height);
+     // g.drawRect(ob.getObstacle().x, ob.getObstacle().y, ob.getObstacle().width, ob.getObstacle().height);
       g.drawImage(ob.image, ob.x, ob.y, null);
     }
   }
@@ -117,7 +117,7 @@ public class Obstacles {
 
   public void resume() {
       this.obList = null;
-    int x = firstX/2;   
+    int x = firstX/2;
     obList = new ArrayList<Obstacle>();
     
     for(BufferedImage bi : imageList) {
@@ -127,7 +127,7 @@ public class Obstacles {
       ob.image = bi;
       ob.x = x;
       //uppermost bound plus random generation with range of 350 cloud
-      ob.y = 69 + ((int)(Math.random()*350+1));
+      ob.y = 69 + ((int)(Math.random()*600+1));
       x += obstacleInterval;
       
       obList.add(ob);

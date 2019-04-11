@@ -45,7 +45,7 @@ public class Plane {
     g.setColor(Color.red);
     //g.drawRect(getPlane().x, getPlane().y, getPlane().width, getPlane().height);
       //g.drawRect(getPlane(),image.100,image.76);
-    g.drawRect(getPlane().x, getPlane().y,image.getWidth(),image.getHeight());
+    //g.drawRect(getPlane().x, getPlane().y,image.getWidth(),image.getHeight());
 
     switch(state) {
 //starting state of the game
@@ -61,7 +61,7 @@ public class Plane {
       case UP:
         //cutting out planeTop
           if(getPlane().getY()>= 65) {
-              g.drawImage(planeUP, planeStartX, planeTop, null);
+              g.drawImage(image, planeStartX, planeTop, null);
               planeTop -= 13;
               break;
           }else{
@@ -69,7 +69,7 @@ public class Plane {
           }
 
       case DOWN:
-          if(getPlane().getY()< 400) {
+          if(getPlane().getY()< 500) {
               g.drawImage(image, planeStartX, planeTop, null);
               planeTop += 13;
               break;
@@ -115,7 +115,7 @@ public class Plane {
   }
   public void down() {
       System.out.println(getPlane().getY());
-      if(getPlane().getY() < 400) {
+      if(getPlane().getY() < 500) {
           topPointReached = false;
           state = DOWN;
       }

@@ -34,7 +34,7 @@ public class Ground {
       image = new Resource().getResourceImage("../images/space.png");
     } catch(Exception e) {e.printStackTrace();}
     try {
-      DesertImage = new Resource().getResourceImage("../images/Desert-1.png");
+      DesertImage = new Resource().getResourceImage("../images/Desert-2.png");
     } catch(Exception e) {e.printStackTrace();}
     
     spaceImageSet = new ArrayList<SpaceImage>();
