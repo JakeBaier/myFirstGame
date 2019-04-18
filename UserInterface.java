@@ -17,7 +17,7 @@ class UserInterface {
     gamePanel.addKeyListener(gamePanel);
     gamePanel.setFocusable(true);
     //changes the background color to blue
-    gamePanel.setBackground(Color.CYAN);
+    gamePanel.setBackground(Color.BLACK);
     
     container.setLayout(new BorderLayout());
     

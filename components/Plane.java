@@ -15,7 +15,6 @@ public class Plane {
   private static int jumpFactor = 15;
   //declared integers for the state of the plane
   public static final int STAND_STILL = 1,
-                    FLYING = 2,
                     UP = 3,
                     CRUISE = 4,
                     DOWN = 5,
@@ -24,54 +23,56 @@ public class Plane {
   //declare image name
   static BufferedImage image;
   static BufferedImage planeUP;
+  static BufferedImage planeDOWN;
   //above BufferedImage are used to gather image resources
 
 
   public Plane() {
     //plane image
     image = new Resource().getResourceImage("../images/Jet-Plane-3.png");
-    planeUP = new Resource().getResourceImage("../images/Jet-Plane-Tilt_UP.png");
+    planeUP = new Resource().getResourceImage("../images/Jet-Plane-UP-3.png");
+    planeDOWN = new Resource().getResourceImage("../images/Jet-Plane-DOWN-1.png");
     planeBaseY = 50;
     planeTopY = 50;
+    //position of the plane
     planeStartX = 50;
     //PIXEL 100 plus width of image
     planeEndX = planeStartX + image.getWidth();
 
     state = 0;
   }
-
+    //sets rectangle around object
   public void create(Graphics g) {
     planeBottom = planeTop + image.getHeight();
     g.setColor(Color.red);
-    //g.drawRect(getPlane().x, getPlane().y, getPlane().width, getPlane().height);
-      //g.drawRect(getPlane(),image.100,image.76);
-    //g.drawRect(getPlane().x, getPlane().y,image.getWidth(),image.getHeight());
+    g.drawRect(getPlane().x, getPlane().y, getPlane().width, getPlane().height);
+      //g.drawRect(getPlane().,image.100,image.76);
+    g.drawRect(getPlane().x, getPlane().y,image.getWidth(),image.getHeight());
 
     switch(state) {
 //starting state of the game
       case STAND_STILL:
         System.out.println("stand");
         g.drawImage(image, planeStartX, planeTopY, null);
-        //g.drawImage(image, planeStartX, 50, null);
         break;
       case CRUISE:
         g.drawImage(image,planeStartX, planeTop, null);
         break;
-
       case UP:
-        //cutting out planeTop
+          //sets upper bound limit for plane travel
           if(getPlane().getY()>= 65) {
-              g.drawImage(image, planeStartX, planeTop, null);
-              planeTop -= 13;
+              g.drawImage(planeUP, planeStartX, planeTop, null);
+              //upward climb intervals of 12px
+              planeTop -= 12;
               break;
           }else{
               cruise();
           }
 
       case DOWN:
-          if(getPlane().getY()< 500) {
-              g.drawImage(image, planeStartX, planeTop, null);
-              planeTop += 13;
+          if(getPlane().getY() <= 500) {
+              g.drawImage(planeDOWN, planeStartX, planeTop, null);
+              planeTop += 12;
               break;
           }else {
               cruise();

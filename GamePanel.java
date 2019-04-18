@@ -6,7 +6,7 @@ import components.Ground;
 import components.Plane;
 import components.Obstacles;
 
-class GamePanel extends JPanel implements KeyListener, Runnable {
+class GamePanel extends JPanel implements KeyListener, Runnable{
 
   public static int WIDTH;
   public static int HEIGHT;
@@ -109,7 +109,7 @@ class GamePanel extends JPanel implements KeyListener, Runnable {
       if (e.getKeyCode() == KeyEvent.VK_DOWN) {
         //running vs !running breaks the game
         if (animator == null || !running) {
-          animator = new Thread(this);
+          animator = new Thread();
           //animator starts running
           animator.start();
           plane.startRunning();
